@@ -19,7 +19,7 @@ public class AppTest {
 		
 		//build session factory from config file
 		SessionFactory sessionFactory = new Configuration()
-				.addAnnotatedClass(Users.class)
+//				.addAnnotatedClass(Users.class)d
 				.configure("hibernate.cfg.xml").buildSessionFactory();
 		
 		//open session from session factory
