@@ -1,0 +1,8 @@
+CREATE SCHEMA `phone_shop_db` ;
+
+CREATE TABLE `phone_shop_db`.`tbl_user` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `full_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`user_id`));
