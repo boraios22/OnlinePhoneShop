@@ -2,6 +2,8 @@ package com.itstep.onlinephoneshop.dao;
 
 import java.util.List;
 
+import com.itstep.onlinephoneshop.entity.Users;
+
 public class UserDAO extends BaseDAO<Users> implements GenericDAO<Users> {
 
 	@Override
@@ -23,16 +25,18 @@ public class UserDAO extends BaseDAO<Users> implements GenericDAO<Users> {
 	}
 
 	@Override
+	public List<Users> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public long count() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
-	public List<Users> listAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 }

@@ -1,20 +1,16 @@
 package com.itstep.onlinephoneshop.dao;
-
-import java.sql.Connection;
 import java.util.List;
 
-public class BaseDAO<T> {
-	private Connection getConnection() {
-		return null;
-	}
+public class BaseDAO<E> {
 	
-	protected int delete(int id) {return 0;}
 	
-	protected int updateEntity(T entity) {return 0;}
+	protected int deleteEntity(int id) {return 0;}
 	
-	protected int createEntity (T entity) {return 0;}
+	protected int updateEntity(E entity) {return 0;}
 	
-	protected T find (int id) {return null;}
+	protected int createEntity (E entity) {return 0;}
 	
-	protected List<T> listAllEntity(){return null;}
+	protected E findEntity (int id) {return null;}
+	
+	protected List<E> listAllEntities(){return null;}
 }
