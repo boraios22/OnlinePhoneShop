@@ -1,33 +1,28 @@
 package com.itstep.onlinephoneshop.dao;
 
 import java.util.List;
-
 import com.itstep.onlinephoneshop.entity.Users;
 
 public class UserDAO extends BaseDAO<Users> implements GenericDAO<Users> {
 
 	@Override
 	public void create(Users entity) {
-		// TODO Auto-generated method stub
-		
+		this.createEntity(entity);
 	}
 
 	@Override
 	public void update(Users entity) {
-		// TODO Auto-generated method stub
-		
+		this.update(entity);
 	}
 
 	@Override
 	public Users get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.findEntity(Users.class, id);
 	}
 
 	@Override
 	public List<Users> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.listAllEntities("from Users");
 	}
 
 	@Override
@@ -35,8 +30,4 @@ public class UserDAO extends BaseDAO<Users> implements GenericDAO<Users> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	
-
-
 }
