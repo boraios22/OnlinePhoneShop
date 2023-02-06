@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-<h1>Online phone shop</h1>
+
+<div class="row">
+	<div class="col-3">
+		<a class="btn btn-primary" href="#" role="button">Home</a>
+	</div>
+	<div class="col-3">
+		<a class="btn btn-primary" href="#" role="button">Login</a>
+	</div>
+</div>
+
 </body>
 </html>
