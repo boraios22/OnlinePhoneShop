@@ -6,6 +6,7 @@
 	<packaging>war</packaging>
 	<name>OnlinePhoneShop</name>
 	<description>OnlinePhoneShop</description>
+	
 	<build>
 		<plugins>
 			<plugin>

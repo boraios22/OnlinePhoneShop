@@ -54,11 +54,17 @@ public class AppTest {
 		// TODO Auto-generated method stub
 		
 		
+		Users user = new Users("gfh@gmail.com","123","Dara");
+		new UserDAO().create(user);
+		
 		var lists = new UserDAO().listAll();
 		for (Users users : lists) {
 			System.out.println(users.getFullName());
 		}
 		
+		var found = new UserDAO().get("gfh@gmail.com");
+		
+		System.out.println("Found : " + found.getFullName());
 		
 		System.out.println("Hello world");
 		

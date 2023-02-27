@@ -19,6 +19,10 @@ public class UserDAO extends BaseDAO<Users> implements GenericDAO<Users> {
 	public Users get(int id) {
 		return this.findEntity(Users.class, id);
 	}
+	@Override
+	public Users get(String email) {
+		return this.findEntityByEmail("from Users where email=:email", email);
+	}
 
 	@Override
 	public List<Users> listAll() {

@@ -46,6 +46,13 @@ public class BaseDAO<E> {
 		return reference;
 	}
 	
+	protected E findEntityByEmail (String query, String email) 
+	{
+		EntityManager manager = factory.createEntityManager();
+		E reference = (E) manager.createQuery(query).setParameter("email", email).getSingleResult();
+		return reference;
+	}
+	
 	protected List<E> listAllEntities(String query)
 	{
 		EntityManager manager = factory.createEntityManager();

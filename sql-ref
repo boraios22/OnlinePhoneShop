@@ -1,8 +1,88 @@
 CREATE SCHEMA `phone_shop_db` ;
 
-CREATE TABLE `phone_shop_db`.`tbl_user` (
+CREATE TABLE `phone_shop_db`.`users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
   `full_name` VARCHAR(45) NULL,
   PRIMARY KEY (`user_id`));
+  
+  CREATE TABLE `phone_shop_db`.`category` (
+  `category_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `category_id_UNIQUE` (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `phone_shop_db`.`phone` (
+  `phone_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `image` blob NOT NULL,
+  `price` float NOT NULL,
+  `brand_id` int(11) NOT NULL,
+  PRIMARY KEY (`phone_id`),
+  UNIQUE KEY `phone_id_UNIQUE` (`phone_id`),
+  UNIQUE KEY `title_UNIQUE` (`title`),
+  KEY `brand_fk_idx` (`brand_id`),
+  CONSTRAINT `brand_fk` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`brand_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `phone_shop_db`.`customer` (
+  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(64) NOT NULL,
+  `full_name` varchar(30) NOT NULL,
+  `address` varchar(128) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `password` varchar(16) NOT NULL,
+  `register_date` datetime NOT NULL,
+  PRIMARY KEY (`customer_id`),
+  UNIQUE KEY `customer_id_UNIQUE` (`customer_id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `phone_shop_db`.`review` (
+  `review_id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `headline` varchar(128) NOT NULL,
+  `comment` varchar(500) NOT NULL,
+  `review_time` datetime NOT NULL,
+  PRIMARY KEY (`review_id`),
+  UNIQUE KEY `review_id_UNIQUE` (`review_id`),
+  KEY `phone_fk_idx` (`phone_id`),
+  KEY `customer_fk_idx` (`customer_id`),
+  CONSTRAINT `phone_fk` FOREIGN KEY (`phone_id`) REFERENCES `phone` (`phone_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `customer_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `phone_shop_db`.`phone_order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL,
+  `order_date` datetime NOT NULL,
+  `shipping_address` varchar(256) NOT NULL,
+  `recipient_name` varchar(30) NOT NULL,
+  `recipient_phone` varchar(15) NOT NULL,
+  `payment_method` varchar(20) NOT NULL,
+  `total` float NOT NULL,
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`order_id`),
+  UNIQUE KEY `order_id_UNIQUE` (`order_id`),
+  KEY `customer_fk_2_idx` (`customer_id`),
+  CONSTRAINT `customer_fk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `phone_shop_db`.`order_detail` (
+  `order_id` int(11) DEFAULT NULL,
+  `phone_id` int(11) DEFAULT NULL,
+  `quantity` int(11) NOT NULL,
+  `subtotal` float NOT NULL,
+  KEY `order_fk_idx` (`order_id`),
+  KEY `phone_fk_2_idx` (`phone_id`),
+  CONSTRAINT `phone_fk_2` FOREIGN KEY (`phone_id`) REFERENCES `phone` (`phone_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `order_fk` FOREIGN KEY (`order_id`) REFERENCES `phone_order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
