@@ -15,7 +15,7 @@
 		
 		
 		<div>
-			<h4><a href="${pageContext.request.contextPath}/admin/user_form.jsp">Create new User</a></h4>
+			<h4><a href="${pageContext.request.contextPath}/admin/user_form">Create new User</a></h4>
 			<table border="1px">
 				<tr>
 					<th>ID</th>

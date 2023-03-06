@@ -18,8 +18,7 @@ public class UserServices {
 		return userRepo.findAll();
 	}
 	
-	public void createUser(String fullName, String email, String password) {
-		Users user = new Users(email, password, fullName);
+	public void createUser(Users user) {
 		userRepo.save(user);
 	}
 }
