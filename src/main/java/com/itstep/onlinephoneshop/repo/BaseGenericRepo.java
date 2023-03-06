@@ -1,9 +1,12 @@
 package com.itstep.onlinephoneshop.repo;
 
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 public class BaseGenericRepo <T> {
 	@PersistenceContext
@@ -28,5 +31,15 @@ public class BaseGenericRepo <T> {
 	
 	protected List<T> findAllEntity(Class<T> type, String query) {
 		return manager.createQuery(query, type).getResultList();
+	}
+	
+	protected List<T> findAllEntityWithParams(String q, Hashtable<String, String> params) {
+		Query query = manager.createQuery(q);
+		for (Map.Entry<String, String> entry : params.entrySet()) {
+			String key = entry.getKey();
+			String val = entry.getValue();
+			query.setParameter(key, val);
+		}
+		return query.getResultList();
 	}
 }

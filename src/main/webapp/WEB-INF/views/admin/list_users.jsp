@@ -4,15 +4,6 @@
 
 <div class="container">
 	<div align="center">
-		<div>
-			<h1>Administration</h1>
-			<a href="list_users">Users</a>| <a href="list_phones">Phones</a>| <a
-				href="list_phones">Customers</a>| <a href="list_phones">Brands</a>|
-			<a href="list_phones">Orders</a>| <a href="list_phones">Reviews</a>|
-			<br/>
-			<br/>
-		</div>
-		
 		
 		<div>
 			<h4><a href="${pageContext.request.contextPath}/admin/user_form">Create new User</a></h4>
@@ -29,7 +20,7 @@
 					<td>${user.id}</td>
 					<td>${user.fullName }</td>
 					<td>${user.email }</td>
-					<td><a href="">Edit</a>|<a href="">Delete</a></td>
+					<td><a href="${pageContext.request.contextPath}/admin/edit_user_form?id=${user.id}"> Edit</a> | <a href="${pageContext.request.contextPath}/admin/delete?id=${user.id}">Delete </a></td>
 				</tr>
 				</c:forEach>
 				

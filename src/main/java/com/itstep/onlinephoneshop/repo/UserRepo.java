@@ -1,5 +1,6 @@
 package com.itstep.onlinephoneshop.repo;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -34,6 +35,15 @@ public class UserRepo extends BaseGenericRepo<Users> implements IGenericRepo<Use
 	@Override
 	public List<Users> findAll() {
 		return super.findAllEntity(Users.class, "from Users");
+	}
+
+	@Override
+	public List<Users> findAllByEmail(String email) {
+		Hashtable<String, String> params = new Hashtable<>();
+		params.put("email", email);
+		
+		
+		return super.findAllEntityWithParams("select u from Users u where u.email = :email", params);
 	}
 
 }

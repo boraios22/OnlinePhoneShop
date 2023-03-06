@@ -18,7 +18,27 @@ public class UserServices {
 		return userRepo.findAll();
 	}
 	
-	public void createUser(Users user) {
+	public boolean createUser(Users user) {
+		
+		List<Users> users = userRepo.findAllByEmail(user.getEmail());
+		if(users.size() > 0) {
+			return false;
+		}
+		
 		userRepo.save(user);
+		return true;
 	}
+	public void updateUser(Users user) {
+		userRepo.update(user);
+	}
+	
+	public Users find(int id) {
+		return userRepo.findById(id);
+	}
+
+	public void delete(int id) {
+		userRepo.delete(id);
+	}
+	
+	
 }

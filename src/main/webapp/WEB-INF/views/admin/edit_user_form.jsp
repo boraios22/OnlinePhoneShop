@@ -5,13 +5,8 @@
 <div class="container">
 	<div align="center">
 		<div>
-			<c:if test="${MESSAGE != null }">
-				<p style="color:red">${MESSAGE }</p>
-			</c:if>
-		</div>
-		<div>
-			<h4>Enter user information</h4>
-			<form action="${pageContext.request.contextPath}/admin/create_user" method="post">
+			<h4>Update user information</h4>
+			<form action="${pageContext.request.contextPath}/admin/update_user" method="post">
 				<table>
 					<tr>
 					<td align="right">Email:</td><td><input type="text" name="email" value="${user.email }"/></td>				
@@ -23,6 +18,11 @@
 					<td align="right">Password:</td><td><input type="text" name="password" value="${user.password }"/></td>				
 					</tr>
 					<tr>
+					<td>
+					<input type="hidden" name="id" value="${user.id }"/>
+					</td>
+					</tr>
+					<tr>
 					<td colspan="2" align="right"><input type="submit" value="Submit"/></td>
 					</tr>
 				
@@ -32,4 +32,3 @@
 		</div>
 	</div>
 </div>
-

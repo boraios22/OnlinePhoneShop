@@ -8,4 +8,5 @@ public interface IGenericRepo <T> {
 	T findById(int id);
 	void delete(int id);
 	List<T> findAll();
+	List<T> findAllByEmail(String email);
 }
