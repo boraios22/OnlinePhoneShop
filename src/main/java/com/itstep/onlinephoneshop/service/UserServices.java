@@ -2,22 +2,24 @@ package com.itstep.onlinephoneshop.service;
 
 import java.util.List;
 
-import com.itstep.onlinephoneshop.dao.UserDAO;
-import com.itstep.onlinephoneshop.entity.Users;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.itstep.onlinephoneshop.entity.Users;
+import com.itstep.onlinephoneshop.repo.IGenericRepo;
+
+@Service
 public class UserServices {
-	private UserDAO userDao;
+	@Autowired
+	IGenericRepo<Users> userRepo;
 	
-	public UserServices() {
-		userDao = new UserDAO();
+	
+	public List<Users> getUsers() {
+		return userRepo.findAll();
 	}
 	
-	public List<Users> GetUsers() {
-		return userDao.listAll();
-	}
-	
-	public void CreateUser(String fullName, String email, String password) {
+	public void createUser(String fullName, String email, String password) {
 		Users user = new Users(email, password, fullName);
-		userDao.create(user);
+		userRepo.save(user);
 	}
 }
