@@ -12,7 +12,7 @@ CREATE TABLE `phone_shop_db`.`brand` (
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`brand_id`),
   UNIQUE KEY `brand_id_UNIQUE` (`brand_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `phone_shop_db`.`phone` (
