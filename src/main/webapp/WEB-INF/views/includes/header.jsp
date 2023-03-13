@@ -2,7 +2,7 @@
  <nav class="navbar navbar-expand-md navbar-dark"
   style="background-color: #2596be;">
   <div>
-   <a href="<%= request.getContextPath() %>/home.jps" class="navbar-brand"> Online Phone Shop</a>
+   <a href="<%= request.getContextPath() %>/" class="navbar-brand"> Online Phone Shop</a>
   </div>
 
   <ul class="navbar-nav navbar-collapse justify-content-end">
