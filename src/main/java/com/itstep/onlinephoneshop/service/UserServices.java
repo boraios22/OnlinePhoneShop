@@ -55,5 +55,12 @@ public class UserServices {
 		userRepo.delete(id);
 	}
 	
+	public Users checkUserByEmail(String email) {
+		List<Users> users = userRepo.findAllByEmail(email);
+		if(users.size() > 0) {
+			return users.get(0);
+		}
+		return null;
+	}
 	
 }

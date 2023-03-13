@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="header.jsp"></jsp:include>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 
 <div class="container">
@@ -11,7 +12,7 @@
 		</div>
 		<div>
 			<h4>Enter user information</h4>
-			<form action="${pageContext.request.contextPath}/admin/create_user" method="post">
+			<form:form action="${pageContext.request.contextPath}/admin/create_user" method="post">
 				<table>
 					<tr>
 					<td align="right">Email:</td><td><input type="text" name="email" value="${user.email }"/></td>				
@@ -27,7 +28,7 @@
 					</tr>
 				
 				</table>
-			</form>
+			</form:form>
 			
 		</div>
 	</div>

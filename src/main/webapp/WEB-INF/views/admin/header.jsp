@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +28,10 @@
 </header>
 		<div align="center">
 			<h1>Administration</h1>
+			<h6>
+				<security:authentication property="principal.username"/></b> 
+				<security:authentication property="principal.authorities"/>		
+			</h6>
 			<a href="<%= request.getContextPath() %>/admin/list_users">Users</a>| <a href="list_phones">Phones</a>| <a
 				href="<%= request.getContextPath() %>/admin/list_phones">Customers</a>| <a href="list_phones">Brands</a>|
 			<a href="<%= request.getContextPath() %>/admin/list_phones">Orders</a>| <a href="list_phones">Reviews</a>|
