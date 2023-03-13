@@ -28,8 +28,23 @@ public class UserServices {
 		userRepo.save(user);
 		return true;
 	}
-	public void updateUser(Users user) {
+	public boolean updateUser(Users user) {
+		
+		List<Users> users = userRepo.findAllByEmail(user.getEmail());
+		boolean iAmInside = false;
+		
+		for(Users u : users) {
+			if (u.getId() == user.getId()) {
+				iAmInside = true;
+			}
+		}
+		
+		if(users.size() > 0 && !iAmInside) {
+			return false;
+		}
 		userRepo.update(user);
+		
+		return true;
 	}
 	
 	public Users find(int id) {

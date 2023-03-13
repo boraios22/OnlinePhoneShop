@@ -60,10 +60,14 @@ public class UserController {
 	@PostMapping(value = "/update_user")
 	String updateUser(Users user, ModelMap model) {
 		
-		service.updateUser(user);
-		
-		model.addAttribute("users", service.getUsers());
-		
-		return "admin/list_users";
+		boolean successful = service.updateUser(user);
+		if (successful) {
+			model.addAttribute("users", service.getUsers());
+			return "admin/list_users";
+		}else {
+			model.addAttribute("user", user);
+			model.addAttribute("MESSAGE", "Email already exists.");
+			return "admin/edit_user_form";
+		}	
 	}
 }

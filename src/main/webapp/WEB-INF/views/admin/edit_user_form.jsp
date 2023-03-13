@@ -5,6 +5,11 @@
 <div class="container">
 	<div align="center">
 		<div>
+			<c:if test="${MESSAGE != null }">
+				<p style="color:red">${MESSAGE }</p>
+			</c:if>
+		</div>
+		<div>
 			<h4>Update user information</h4>
 			<form action="${pageContext.request.contextPath}/admin/update_user" method="post">
 				<table>
